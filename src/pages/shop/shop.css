@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.shop-container {
+  max-width: 100rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  column-gap: 60px;
+  row-gap: 50px;
+
+  margin-bottom: 5rem;
+}
+
+.shopItem {
+}
+
+.image {
+  width: 100%;
+}
+
+.details {
+  text-align: center;
+}
+
+.button {
+  border: none;
+  padding: 5px 10px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  cursor: pointer;
+}
