@@ -71,14 +71,32 @@ const shopItem = [
 
 export default function App() {
   const [items, setItems] = useState(shopItem);
+  const [cartItems, setCartItems] = useState([]);
+  const [value, setValue] = useState(0);
+
+  function handleAddToCart(item) {
+    setCartItems((cartItems) => [...cartItems, item]);
+  }
 
   return (
     <div>
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Shop items={items} />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/"
+            element={
+              <Shop
+                items={items}
+                onCartItem={handleAddToCart}
+                onQuantity={value}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} setValue={setValue} />}
+          />
         </Routes>
       </Router>
     </div>
