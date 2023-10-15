@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./cart.css";
+import { Trash } from "phosphor-react";
 
-export const CartItem = ({ cartItem, onTotalPrice, onRemoveQt }) => {
+export const CartItem = ({
+  cartItem,
+  onTotalPrice,
+  onRemoveQt,
+  removeCartItem,
+}) => {
   const [quantity, setQuantity] = useState(1);
 
   function handleMinus() {
@@ -38,6 +44,11 @@ export const CartItem = ({ cartItem, onTotalPrice, onRemoveQt }) => {
           +
         </button>
       </div>
+      <Trash
+        size={32}
+        className="trash"
+        onClick={() => removeCartItem(cartItem, quantity)}
+      />
     </div>
   );
 };

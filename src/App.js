@@ -3,7 +3,7 @@ import { Navbar } from "./components/navbar";
 import { Shop } from "./pages/shop/shop.jsx";
 import { Cart } from "./pages/cart/cart";
 import { useState } from "react";
-import shopItems from "./datadata";
+import shopItems from "./data.js";
 
 export default function App() {
   const [items, setItems] = useState(shopItems);
@@ -14,6 +14,11 @@ export default function App() {
     if (cartItems.indexOf(item) !== -1) return;
     setCartItems((cartItems) => [...cartItems, item]);
     console.log(cartItems.indexOf(item));
+  }
+
+  function handleRemoveFromCart(item, quantity) {
+    setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
+    setTotalPrice((tp) => (tp -= item.price * quantity));
   }
 
   function handleTotalPrice(item, quantity, s) {
@@ -65,6 +70,7 @@ export default function App() {
                 totalPrice={totalPrice}
                 onTotalPrice={handleTotalPrice}
                 onRemoveQt={handleReduceQuantity}
+                removeCartItem={handleRemoveFromCart}
               />
             }
           />

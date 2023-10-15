@@ -1,4 +1,4 @@
-export const shopItem = [
+const shopItems = [
   {
     id: 1,
     image:
@@ -62,3 +62,5 @@ export const shopItem = [
     price: 69.99,
   },
 ];
+
+export default shopItems;
