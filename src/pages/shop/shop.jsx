@@ -2,7 +2,7 @@ import React from "react";
 import { ShopItem } from "./shopItem";
 import "./shop.css";
 
-export const Shop = ({ items, onCartItem, onQuantity, cartItems }) => {
+export const Shop = ({ items, onCartItem, setTotalPrice }) => {
   return (
     <div>
       <h1>Gustex tech shop</h1>
@@ -13,7 +13,7 @@ export const Shop = ({ items, onCartItem, onQuantity, cartItems }) => {
             item={item}
             key={item.id}
             onCartItem={onCartItem}
-            onQuantity={onQuantity}
+            setTotalPrice={setTotalPrice}
           />
         ))}
       </div>

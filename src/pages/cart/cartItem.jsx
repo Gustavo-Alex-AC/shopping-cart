@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "./cart.css";
 
-export const CartItem = ({ cartItem, setValue }) => {
+export const CartItem = ({ cartItem, onTotalPrice, onRemoveQt }) => {
   const [quantity, setQuantity] = useState(1);
-  //   const [value, setValue] = useState(1);
 
   function handleMinus() {
-    if (quantity > 1) setQuantity((s) => (s -= 1));
+    if (quantity > 1) {
+      setQuantity((s) => (s -= 1));
+
+      onRemoveQt(cartItem, quantity);
+    }
   }
 
   function handlePlus() {
     setQuantity((s) => (s += 1));
+    onTotalPrice(cartItem, quantity);
   }
 
   return (
@@ -28,7 +32,7 @@ export const CartItem = ({ cartItem, setValue }) => {
         <input
           className="cart-input"
           value={quantity}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setQuantity(Number(e.target.value))}
         />
         <button className="cart-button" onClick={handlePlus}>
           +
